@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>BSIT Student Portal</title>
+
+<style>
+
+    :root {
+        --deep-red: #7a1224;
+        --crimson: #b8283f;
+        --gold: #d9a441;
+        --cream: #f7f4ec;
+        --paper: #ffffff;
+        --ink: #23281f;
+        --line: #ddd6c2;
+        --header-bg: #0d0d0d;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: "Segoe UI", Verdana, Geneva, sans-serif;
+        line-height: 1.5;
+    }
+
+    /* ===== HEADER ===== */
+
+    header {
+        background: var(--header-bg);
+        color: var(--cream);
+        padding: 22px 32px;
+        border-bottom: 4px solid var(--crimson);
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        text-align: left;
+    }
+
+    header .logo {
+        width: 84px;
+        height: 84px;
+        object-fit: contain;
+        background: transparent;
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+
+    header .header-text h1 {
+        margin: 0;
+        font-size: 1.9rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--cream);
+    }
+
+    header .header-text .header-subtitle {
+        margin: 4px 0 0;
+        font-weight: 700;
+        font-size: 0.98rem;
+        color: var(--crimson);
+    }
+
+    header .header-text h2 {
+        margin: 4px 0 0;
+        font-weight: 400;
+        font-size: 0.88rem;
+        color: #cfcfcf;
+    }
+
+    /* ===== NAVIGATION (fixed sidebar) ===== */
+
+    nav {
+        width: 100%;
+        background: var(--deep-red);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+        padding: 12px 14px;
+        border-bottom: 4px solid var(--gold);
+    }
+
+    nav .nav-title {
+        display: none;
+    }
+
+    nav a {
+        color: var(--cream);
+        text-decoration: none;
+        padding: 10px 14px;
+        border-radius: 4px;
+        font-size: 0.92rem;
+        text-align: center;
+    }
+
+    nav a:hover {
+        background: var(--gold);
+        color: var(--deep-red);
+    }
+
+    /* ===== LAYOUT ===== */
+
+    main {
+        padding: 30px 40px 60px;
+    }
+
+    section {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-left: 5px solid var(--crimson);
+        border-radius: 6px;
+        padding: 26px 28px;
+        margin-bottom: 28px;
+        box-shadow: 0 2px 4px rgba(122, 18, 36, 0.08);
+    }
+
+    section h2 {
+        margin-top: 0;
+        color: var(--deep-red);
+        border-bottom: 2px solid var(--gold);
+        padding-bottom: 8px;
+        font-size: 1.35rem;
+    }
+
+    p {
+        margin: 10px 0;
+    }
+
+    /* ===== HOME ===== */
+
+    .home-card {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .home-text {
+        flex: 1 1 320px;
+    }
+
+    .home-photo {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border: 4px solid var(--crimson);
+        box-shadow: 0 2px 6px rgba(122, 18, 36, 0.25);
+        flex-shrink: 0;
+    }
+
+    /* ===== VISIT CTU BANNER ===== */
+
+    .visit-ctu {
+        border-left: 5px solid var(--gold);
+        text-align: center;
+    }
+
+    .visit-ctu h2 {
+        color: var(--deep-red);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .visit-ctu a {
+        display: inline-block;
+        text-decoration: none;
+    }
+
+    .visit-ctu img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin: 12px 0;
+        box-shadow: 0 0 0 3px var(--gold), 0 4px 10px rgba(0, 0, 0, 0.5);
+        transition: transform 0.2s ease;
+    }
+
+    .visit-ctu a:hover img {
+        transform: scale(1.06);
+    }
+
+    .visit-ctu p {
+        color: var(--crimson);
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .visit-ctu .tagline {
+        color: #7a7466;
+        font-weight: 400;
+        font-size: 0.9rem;
+        margin: 6px 0 0;
+    }
+
+    /* ===== MULTIMEDIA ===== */
+
+    .media-thumb {
+        position: relative;
+        display: block;
+        width: 100%;
+        max-width: 720px;
+        margin: 0 auto;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .media-thumb img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .media-thumb .play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 68px;
+        height: 48px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s ease;
+    }
+
+    .media-thumb .play-icon::after {
+        content: "";
+        border-style: solid;
+        border-width: 12px 0 12px 20px;
+        border-color: transparent transparent transparent var(--cream);
+        margin-left: 4px;
+    }
+
+    .media-thumb:hover .play-icon {
+        background: var(--crimson);
+    }
+
+    /* ===== FORMS ===== */
+
+    table.form-table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    table.form-table td {
+        padding: 8px 6px;
+        vertical-align: middle;
+    }
+
+    label {
+        font-weight: 600;
+        color: var(--deep-red);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="date"],
+    input[type="tel"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 0.95rem;
+        background: var(--cream);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: 2px solid var(--crimson);
+        outline-offset: 1px;
+        background: var(--paper);
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        accent-color: var(--crimson);
+        margin-right: 6px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+        padding: 9px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 0.92rem;
+        cursor: pointer;
+        margin-right: 8px;
+        margin-top: 4px;
+    }
+
+    input[type="submit"] {
+        background: var(--crimson);
+        color: var(--cream);
+    }
+
+    input[type="submit"]:hover {
+        background: var(--deep-red);
+    }
+
+    input[type="reset"] {
+        background: var(--paper);
+        color: var(--ink);
+        border: 1px solid var(--line);
+    }
+
+    input[type="reset"]:hover {
+        background: var(--cream);
+    }
+
+    /* ===== STUDENT TABLE ===== */
+
+    table.data-table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 0.92rem;
+        border: 2px solid var(--deep-red);
+    }
+
+    table.data-table th {
+        background: var(--deep-red);
+        color: var(--cream);
+        padding: 10px;
+        text-align: left;
+        border: 1px solid var(--deep-red);
+    }
+
+    table.data-table td {
+        padding: 10px;
+        border: 1px solid var(--line);
+    }
+
+    table.data-table tr:nth-child(even) td {
+        background: var(--cream);
+    }
+
+    table.data-table tr:hover td {
+        background: #eee6cf;
+    }
+
+    table.data-table a {
+        color: var(--crimson);
+        text-decoration: none;
+    }
+
+    table.data-table a:hover {
+        text-decoration: underline;
+    }
+
+    /* ===== LINKS SECTION ===== */
+
+    .link-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .link-grid a {
+        flex: 1 1 160px;
+        text-align: center;
+        background: var(--cream);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 14px 10px;
+        text-decoration: none;
+        color: var(--deep-red);
+        font-weight: 600;
+    }
+
+    .link-grid a img,
+    .link-grid a svg {
+        display: block;
+        width: 56px;
+        height: 56px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin: 0 auto 8px;
+    }
+
+    .link-grid a:hover {
+        background: var(--gold);
+        color: var(--paper);
+        border-color: var(--gold);
+    }
+
+    /* ===== FOOTER ===== */
+
+    footer {
+        background: var(--deep-red);
+        color: var(--cream);
+        text-align: center;
+        padding: 24px 16px;
+        font-size: 0.9rem;
+    }
+
+    footer b {
+        color: var(--gold);
+    }
+
+    /* ===== RESPONSIVE (narrow screens) ===== */
+
+    @media (max-width: 760px) {
+
+        header {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        main {
+            padding: 24px 16px 50px;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <img class="logo" src="logo.jpg" alt="Information Technology Department Logo - PARSERS - Cebu Technological University Argao Campus">
+        <div class="header-text">
+            <h1>BSIT Student Portal</h1>
+            <p class="header-subtitle">Student Registration &amp; Multimedia Center</p>
+            <h2>Cebu Technological University &ndash; Argao Campus</h2>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <p class="nav-title">MENU</p>
+        <a href="#home">Home</a>
+        <a href="#login">Log In</a>
+        <a href="#signup">Sign Up</a>
+        <a href="#students">Students</a>
+        <a href="#registration">Registration</a>
+        <a href="#multimedia">Multimedia</a>
+        <a href="#links">Useful Links</a>
+    </nav>
+
+    <main>
+
+        <!-- HOME -->
+        <section id="home">
+            <div class="home-card">
+                <div class="home-text">
+                    <h2>Welcome to the BSIT Student Portal</h2>
+                    <p>
+                        Welcome to the BSIT Student Portal of Cebu Technological University &ndash;
+                        Argao Campus.
+                    </p>
+                    <p>
+                        This portal allows students to view student information,
+                        create an account, log in, and register.
+                    </p>
+                </div>
+                <img class="home-photo" src="Jackie.jpg" alt="Photo of Jackie Eloise N. Amaya">
+            </div>
+        </section>
+
+        <!-- VISIT CTU -->
+        <section id="visit-ctu" class="visit-ctu">
+            <h2>Home of Innovation, Tradition &amp; Excellence</h2>
+            <a href="https://www.ctu.edu.ph/" target="_blank">
+                <img src="CTU.jpg" alt="Cebu Technological University Seal">
+            </a>
+            <p>Tap the seal to explore Cebu Technological University</p>
+            <p class="tagline">Founded 1911 &middot; Cebu, Philippines</p>
+        </section>
+
+        <!-- LOGIN -->
+        <section id="login">
+            <h2>Student Log In</h2>
+
+            <form>
+                <table class="form-table">
+                    <tr>
+                        <td width="30%"><label>Email:</label></td>
+                        <td><input type="email" name="loginEmail" required></td>
+                    </tr>
+                    <tr>
+                        <td><label>Password:</label></td>
+                        <td><input type="password" name="loginPassword" required></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Log In">
+                            <input type="reset" value="Reset">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <p>Don't have an account? <a href="#signup">Sign Up</a></p>
+        </section>
+
+        <!-- SIGN UP -->
+        <section id="signup">
+            <h2>Student Sign Up</h2>
+
+            <form>
+                <table class="form-table">
+                    <tr>
+                        <td width="30%"><label>Full Name:</label></td>
+                        <td><input type="text" name="fullname" required></td>
+                    </tr>
+                    <tr>
+                        <td><label>Email:</label></td>
+                        <td><input type="email" name="email" required></td>
+                    </tr>
+                    <tr>
+                        <td><label>Password:</label></td>
+                        <td><input type="password" name="password" required></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Create Account">
+                            <input type="reset" value="Reset">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <p>Already have an account? <a href="#login">Log In</a></p>
+        </section>
+
+        <!-- STUDENT INFORMATION -->
+        <section id="students">
+            <h2>Student Information</h2>
+
+            <table class="data-table">
+                <tr>
+                    <th>Student ID</th>
+                    <th>Full Name</th>
+                    <th>Program</th>
+                    <th>Year Level</th>
+                    <th>Email</th>
+                </tr>
+
+                <tr>
+                    <td>7251294</td>
+                    <td>Jackie Eloise N. Amaya</td>
+                    <td>BSIT</td>
+                    <td>2nd Year</td>
+                    <td><a href="mailto:jackie@gmail.com">jackie@gmail.com</a></td>
+                </tr>
+
+                <tr>
+                    <td>7251311</td>
+                    <td>Candice Almeia A. Ponce</td>
+                    <td>BSIT</td>
+                    <td>2nd Year</td>
+                    <td><a href="mailto:dice@gmail.com">dice@gmail.com</a></td>
+                </tr>
+
+                <tr>
+                    <td>7251265</td>
+                    <td>Shailou Marie M. Pacaña</td>
+                    <td>BSIT</td>
+                    <td>2nd Year</td>
+                    <td><a href="mailto:shalo@gmail.com">shalo@gmail.com</a></td>
+                </tr>
+
+                <tr>
+                    <td>7251299</td>
+                    <td>Jhyra Dionne Z. Canoog</td>
+                    <td>BSIT</td>
+                    <td>3rd Year</td>
+                    <td><a href="mailto:jiraa@gmail.com">jiraa@gmail.com</a></td>
+                </tr>
+
+                <tr>
+                    <td>7251362</td>
+                    <td>Joan Rica M. Abala</td>
+                    <td>BSIT</td>
+                    <td>4th Year</td>
+                    <td><a href="mailto:ricachan@gmail.com">ricachan@gmail.com</a></td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- REGISTRATION FORM -->
+        <section id="registration">
+            <h2>Student Registration Form</h2>
+
+            <form method="get">
+                <table class="form-table">
+
+                    <tr>
+                        <td width="30%"><label>Full Name:</label></td>
+                        <td><input type="text" name="fullname" placeholder="Enter full name" required></td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Email:</label></td>
+                        <td><input type="email" name="email" placeholder="example@email.com" required></td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Password:</label></td>
+                        <td><input type="password" name="password" required></td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Age:</label></td>
+                        <td><input type="number" name="age" min="15" max="100" required></td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Birthdate:</label></td>
+                        <td><input type="date" name="birthdate" required></td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Mobile Number:</label></td>
+                        <td><input type="tel" name="mobile" placeholder="09XXXXXXXXX" required></td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Program:</label></td>
+                        <td>
+                            <select name="program" required>
+                                <option value="">-- Select Program --</option>
+                                <option value="BSIT">BSIT</option>
+                                <option value="BSCS">BSCS</option>
+                                <option value="BSIS">BSIS</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td valign="top"><label>Year Level:</label></td>
+                        <td>
+                            <input type="radio" name="year" value="1st Year" required> 1st Year<br>
+                            <input type="radio" name="year" value="2nd Year"> 2nd Year<br>
+                            <input type="radio" name="year" value="3rd Year"> 3rd Year<br>
+                            <input type="radio" name="year" value="4th Year"> 4th Year
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td valign="top"><label>Programming Skills:</label></td>
+                        <td>
+                            <input type="checkbox" name="skills" value="HTML"> HTML<br>
+                            <input type="checkbox" name="skills" value="CSS"> CSS<br>
+                            <input type="checkbox" name="skills" value="JavaScript"> JavaScript<br>
+                            <input type="checkbox" name="skills" value="Java"> Java<br>
+                            <input type="checkbox" name="skills" value="Python"> Python
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td valign="top"><label>Address / Message:</label></td>
+                        <td>
+                            <textarea name="address" rows="5" placeholder="Enter your address or message" required></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Submit Registration">
+                            <input type="reset" value="Reset">
+                        </td>
+                    </tr>
+
+                </table>
+            </form>
+        </section>
+
+        <!-- MULTIMEDIA -->
+        <section id="multimedia">
+            <h2>Educational Audio</h2>
+            <p>This audio clip explains how technology is transforming education, giving BSIT students insight into real-world applications of IT in teaching and learning.</p>
+            <audio controls style="width: 100%; max-width: 720px; display: block; margin: 0 auto;">
+                <source src="Technology in Education.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+
+            <h2 style="margin-top: 28px;">Educational Video</h2>
+            <p>This video presents key IT concepts in a visual format, helping BSIT students connect classroom lessons with real-world technology practices.</p>
+            <video controls style="width: 100%; max-width: 720px; display: block; margin: 0 auto; border-radius: 6px;">
+                <source src="videoplayback.mp4" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
+
+            <h2 style="margin-top: 28px;">Multimedia Embedded Resources</h2>
+            <p>This video helps BSIT students strengthen their English communication skills, which are essential for technical writing, presentations, and professional collaboration in the IT field.</p>
+            <video controls style="width: 100%; max-width: 720px; display: block; margin: 0 auto; border-radius: 6px;">
+                <source src="Multimedia.mp4" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
+        </section>
+
+        <!-- USEFUL LINKS -->
+        <section id="links">
+            <h2>Navigation / Useful Links</h2>
+
+            <div class="link-grid">
+                <a href="https://www.ctu.edu.ph/" target="_blank">
+                    <img src="CTU.jpg" alt="Cebu Technological University Seal">
+                    Cebu Technological University
+                </a>
+                <a href="https://www.google.com/" target="_blank">
+                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                        <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
+                        <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
+                        <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
+                        <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
+                    </svg>
+                    Google
+                </a>
+                <a href="https://www.facebook.com/" target="_blank">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    Facebook
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><b>BSIT Student Portal</b></p>
+        <p>Cebu Technological University &ndash; Argao Campus</p>
+        <p>&copy; 2026</p>
+    </footer>
+
+</body>
+
+</html>
